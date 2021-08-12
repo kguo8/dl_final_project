@@ -1,13 +1,59 @@
-# Page Layout Analysis using Europeana Newspaper Dataset
+## Page Layout Analysis using Europeana Newspapers Dataset
 
-The goal of the project is to replicate the text segmentation part as described in the following research paper
+### Goal of the Project
+-----
 
-https://link.springer.com/article/10.1007/s00521-020-04910-x
+The goal of the project is to experiment with using a modified U-Net to perform layout segmentation on historical documents. We are doing this with the help of the research paper below:
 
-The paper described using either U-Net Architecture or the modified U-Net(Wick) for this task. We implemented the Modified U-Net(Wick) Architecture for this task.
+[Building an efficient OCR system for historical documents with little training data](https://link.springer.com/article/10.1007/s00521-020-04910-x)
 
-Preprocessing part was mostly generating the masks for the document images which were given in xml format.
+### Dataset 
+---
 
-The Modified U-Net wick model is stored in the wick_unet.py file.
+The Dataset used for this project is the [Europeana  Project Dataset](https://ieeexplore.ieee.org/document/7333898), which contains 500+ pages newspaper scans with ground truths containing layout information. For this project, we focused on the English Dataset with 50 images
 
-Experiments conducted to improve the accuracy of the prediction were transforming the images using Albumentations package.Transformtions like PadIfNeeded, ShiftScaleRotate, RGBShift, RandomBrightnessContrast, Normalization were used.
+Data Pre-processing part was mostly generating the masks for the document images which were in the xml format.
+
+### Model Architecture
+---
+
+We used the Modified U-Net Architecture as proposed in [Fully Convolutional Neural Networks for Page Segmentation of Historical Document Images](https://arxiv.org/abs/1711.07695)  paper.It’s different from a traditional U-Net in a way that it does not use any skip connections and it has fewer convolution layers. So, this version is much quicker to run than a more traditional U-Net architecture.
+
+The pytorch implementation of model architecture could be found [here](https://github.com/kguo8/dl_final_project/blob/main/wick_unet.py)
+
+### Experiments
+---
+
+We conducted 3 experiments, as described below, on the training set to check which Image Augmentations were best using the [Albumentations](https://github.com/albumentations-team/albumentations) library. 
+
+* Padding + Resizing
+* Padding + Resizing + ShiftScaleRotate + RGBShift+ RandomBrightnessContrast
+* Padding + Resizing + Rotation + GaussNoise
+
+We padded the images to two-thirds ratio and we resized it to 390 * 260 for quicker computation time.
+
+The experiments can be found [here](https://github.com/kguo8/dl_final_project/tree/main/experiments)
+
+### Results
+---
+
+We found that the model trained with third experiment performed best on the validation set. So, we used this on the test set and got an F1 score of 0.31.
+
+### Future Steps
+---
+
+* Use more training data.
+* Experiment with padding dynamically instead of padding to maximum image size.
+
+### Technologies
+---
+* Pytorch v1.7
+* Python v3.8
+
+
+### References
+---
+* [Building an efficient OCR system for historical documents with little training data](https://link.springer.com/article/10.1007/s00521-020-04910-x)
+*  [Europeana  Project Dataset](https://ieeexplore.ieee.org/document/7333898)
+*  [Fully Convolutional Neural Networks for Page Segmentation of Historical Document Images](https://arxiv.org/abs/1711.07695)
+

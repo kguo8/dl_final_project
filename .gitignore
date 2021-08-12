@@ -132,3 +132,5 @@ dmypy.json
 # data
 Prima/*
 .DS_Store
+*.npz
+*.zip

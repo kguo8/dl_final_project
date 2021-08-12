@@ -1,5 +1,16 @@
 ## Page Layout Analysis using Europeana Newspapers Dataset
 
+### Table of Contents
+-----
+* [Goal of the Project](https://github.com/kguo8/dl_final_project#goal-of-the-project)
+* [Dataset](https://github.com/kguo8/dl_final_project#dataset)
+* [Model Architecture](https://github.com/kguo8/dl_final_project#model-architecture)
+* [Experiments](https://github.com/kguo8/dl_final_project#experiments)
+* [Results](https://github.com/kguo8/dl_final_project#results)
+* [Future Steps](https://github.com/kguo8/dl_final_project#future-steps)
+* [Technologies](https://github.com/kguo8/dl_final_project#technologies)
+* [References](https://github.com/kguo8/dl_final_project#references)
+
 ### Goal of the Project
 -----
 
@@ -54,6 +65,6 @@ We found that the model trained with third experiment performed best on the vali
 ### References
 ---
 * [Building an efficient OCR system for historical documents with little training data](https://link.springer.com/article/10.1007/s00521-020-04910-x)
-*  [Europeana  Project Dataset](https://ieeexplore.ieee.org/document/7333898)
-*  [Fully Convolutional Neural Networks for Page Segmentation of Historical Document Images](https://arxiv.org/abs/1711.07695)
+* [Europeana  Project Dataset](https://ieeexplore.ieee.org/document/7333898)
+* [Fully Convolutional Neural Networks for Page Segmentation of Historical Document Images](https://arxiv.org/abs/1711.07695)
 

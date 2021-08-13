@@ -21,21 +21,21 @@ The goal of the project is to experiment with using a modified U-Net to perform 
 ### Dataset 
 ---
 
-The Dataset used for this project is the [Europeana  Project Dataset](https://ieeexplore.ieee.org/document/7333898), which contains 500+ pages newspaper scans with ground truths containing layout information. For this project, we focused on the English Dataset with 50 images
+The Dataset used for this project is the [Europeana  Project Dataset](https://ieeexplore.ieee.org/document/7333898), which contains 500+ pages newspaper scans with ground truths containing layout information. For this project, we focused on the English Dataset with 50 images.
 
-Data Pre-processing part was mostly generating the masks for the document images which were in the xml format.
+Data Pre-processing involved extracting boundary points of text region from the ground truth xml file and obtaining a matrix representation of the text region in the images.
 
 ### Model Architecture
 ---
 
-We used the Modified U-Net Architecture as proposed in [Fully Convolutional Neural Networks for Page Segmentation of Historical Document Images](https://arxiv.org/abs/1711.07695)  paper.It’s different from a traditional U-Net in a way that it does not use any skip connections and it has fewer convolution layers. So, this version is much quicker to run than a more traditional U-Net architecture.
+We used the Modified U-Net Architecture as proposed in [Fully Convolutional Neural Networks for Page Segmentation of Historical Document Images](https://arxiv.org/abs/1711.07695)  paper. It’s different from a traditional U-Net in that it does not use any skip connections and it has fewer convolution layers. So this version is much quicker to run than a more traditional U-Net architecture.
 
 The pytorch implementation of model architecture could be found [here](https://github.com/kguo8/dl_final_project/blob/main/wick_unet.py)
 
 ### Experiments
 ---
 
-We conducted 3 experiments, as described below, on the training set to check which Image Augmentations were best using the [Albumentations](https://github.com/albumentations-team/albumentations) library. 
+We conducted 3 experiments, as described below, on the training set to check which iamge augmentations were best using the [Albumentations](https://github.com/albumentations-team/albumentations) library. 
 
 * Padding + Resizing
 * Padding + Resizing + ShiftScaleRotate + RGBShift+ RandomBrightnessContrast
@@ -48,7 +48,7 @@ The experiments can be found [here](https://github.com/kguo8/dl_final_project/tr
 ### Results
 ---
 
-We found that the model trained with third experiment performed best on the validation set. So, we used this on the test set and got an F1 score of 0.31.
+We found that the model trained with third experiment performed best on the validation set. So, we used this on the test set and got an F1 score of 0.31. This is much lower than in the paper we are replicating, we suspect that might be due to our training dataset being much smaller and our padding approach is reducing the amount of detail the model sees. 
 
 ### Future Steps
 ---

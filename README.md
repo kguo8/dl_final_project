@@ -35,7 +35,7 @@ The pytorch implementation of model architecture could be found [here](https://g
 ### Experiments
 ---
 
-We conducted 3 experiments, as described below, on the training set to check which iamge augmentations were best using the [Albumentations](https://github.com/albumentations-team/albumentations) library. 
+We conducted 3 experiments, as described below, on the training set to check which image augmentations were best using the [Albumentations](https://github.com/albumentations-team/albumentations) library. 
 
 * Padding + Resizing
 * Padding + Resizing + ShiftScaleRotate + RGBShift+ RandomBrightnessContrast
